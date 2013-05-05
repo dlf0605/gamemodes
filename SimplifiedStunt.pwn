@@ -42,7 +42,7 @@ public OnGameModeInit()
 	BUD::VerifyColumn("hour", 	BUD::TYPE_NUMBER);
 	BUD::VerifyColumn("minute", 	BUD::TYPE_NUMBER);
 
-	BUD::VerifyColumn("savepoint", BUD::TYPE_NUMBER);
+	BUD::VerifyColumn("savepoint",	BUD::TYPE_NUMBER);
 	BUD::VerifyColumn("saveveh",	BUD::TYPE_NUMBER);
 	BUD::VerifyColumn("saveposx", 	BUD::TYPE_FLOAT);
 	BUD::VerifyColumn("saveposy", 	BUD::TYPE_FLOAT);
@@ -139,15 +139,15 @@ public OnPlayerDisconnect(playerid, reason)
 			"vehmodel", 	pVehModel[playerid],
 			"vehcolour1", 	pVehColour[playerid][0],
 			"vehcolour2", 	pVehColour[playerid][1],
-			"admin", 		pAdmin[playerid],
-			"skin", 		pSkin[playerid],
-			"weather", 		pWeather[playerid],
-			"world", 		pWorld[playerid],
+			"admin", 	pAdmin[playerid],
+			"skin", 	pSkin[playerid],
+			"weather", 	pWeather[playerid],
+			"world", 	pWorld[playerid],
 			"practice", 	pPractice[playerid],
-			"hour", 		pTime[playerid][0],
-			"minute", 		pTime[playerid][1],
+			"hour", 	pTime[playerid][0],
+			"minute", 	pTime[playerid][1],
 			"savepoint", 	pSavedPoint[playerid],
-			"saveveh", 		pSavedVeh[playerid],
+			"saveveh", 	pSavedVeh[playerid],
 			"saveposx", 	pSavedPos[playerid][0],
 			"saveposy", 	pSavedPos[playerid][1],
 			"saveposz", 	pSavedPos[playerid][2],
