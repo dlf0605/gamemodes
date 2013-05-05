@@ -630,6 +630,16 @@ public OnPlayerStreamOut(playerid, forplayerid)
 
 public OnVehicleStreamIn(vehicleid, forplayerid)
 {
+	for(new playerid = 0; playerid < MAX_PLAYERS; playerid++)
+	{
+		if(!IsPlayerConnected(playerid)) continue;
+
+		if(pVehID[playerid] == vehicleid)
+		{
+			if(forplayerid == playerid) SetVehicleParamsForPlayer(vehicleid, forplayerid, 0, 0);
+			else SetVehicleParamsForPlayer(vehicleid, forplayerid, 0, 1);
+		}
+	}
 	return 1;
 }
 
