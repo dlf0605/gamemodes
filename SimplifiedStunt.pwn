@@ -26,7 +26,7 @@ public OnGameModeInit()
 	SetTeamCount(1);
 	EnableVehicleFriendlyFire( );
 	DisableInteriorEnterExits( );
-    ShowPlayerMarkers(1);
+    	ShowPlayerMarkers(1);
 	UsePlayerPedAnims( );
 
 	BUD::Initialize( );
@@ -34,12 +34,12 @@ public OnGameModeInit()
 	BUD::VerifyColumn("vehcolour1", BUD::TYPE_NUMBER);
 	BUD::VerifyColumn("vehcolour2", BUD::TYPE_NUMBER);
 
-	BUD::VerifyColumn("admin", 		BUD::TYPE_NUMBER);
-	BUD::VerifyColumn("skin", 		BUD::TYPE_NUMBER);
+	BUD::VerifyColumn("admin", 	BUD::TYPE_NUMBER);
+	BUD::VerifyColumn("skin", 	BUD::TYPE_NUMBER);
 	BUD::VerifyColumn("weather", 	BUD::TYPE_NUMBER);
-	BUD::VerifyColumn("world", 		BUD::TYPE_NUMBER);
+	BUD::VerifyColumn("world", 	BUD::TYPE_NUMBER);
 	BUD::VerifyColumn("practice", 	BUD::TYPE_NUMBER);
-	BUD::VerifyColumn("hour", 		BUD::TYPE_NUMBER);
+	BUD::VerifyColumn("hour", 	BUD::TYPE_NUMBER);
 	BUD::VerifyColumn("minute", 	BUD::TYPE_NUMBER);
 
 	BUD::VerifyColumn("savepoint", BUD::TYPE_NUMBER);
@@ -90,10 +90,10 @@ public OnPlayerRequestClass(playerid, classid)
 
 public OnPlayerConnect(playerid)
 {
-    new string[128], name[MAX_PLAYER_NAME+1];
-    GetPlayerName(playerid, name, sizeof(name));
-    format(string,sizeof(string),"%s has joined the server.",name);
-    SendClientMessageToAll(COLOR_GREY,string);
+    	new string[128], name[MAX_PLAYER_NAME+1];
+    	GetPlayerName(playerid, name, sizeof(name));
+    	format(string,sizeof(string),"%s has joined the server.",name);
+   	SendClientMessageToAll(COLOR_GREY,string);
 
 	SetPlayerTeam(playerid, 0);
 	TogglePlayerSpectating(playerid, true);
@@ -105,22 +105,22 @@ public OnPlayerConnect(playerid)
 	new userid;
 	userid = BUD::GetNameUID(name);
 	if(userid == BUD::INVALID_UID )
-    {
+    	{
 		ShowPlayerDialog(playerid, DIALOG_REGISTER, DIALOG_STYLE_PASSWORD,
 		""C_WHITE"Register a new account", ""C_WHITE"Enter a password", "Register", "");
-    }
-    else
-    {
+	}
+	else
+	{
 		ShowPlayerDialog(playerid, DIALOG_LOGIN, DIALOG_STYLE_PASSWORD,
 		""C_WHITE"Login to your account", ""C_WHITE"Enter your password", "Login", "");
-    }
+	}
 	return 1;
 }
 
 public OnPlayerDisconnect(playerid, reason)
 {
-    new string[128], name[MAX_PLAYER_NAME+1], reasonstr[20];
-    GetPlayerName(playerid, name, sizeof(name));
+	new string[128], name[MAX_PLAYER_NAME+1], reasonstr[20];
+	GetPlayerName(playerid, name, sizeof(name));
 	switch(reason)
 	{
 		case 0: reasonstr = "Lost Connection";
@@ -129,7 +129,7 @@ public OnPlayerDisconnect(playerid, reason)
 		default: reasonstr =  "Unknown";
 	}
 	format(string,sizeof(string),"%s has left the server. (%s)", name, reasonstr);
-    SendClientMessageToAll(COLOR_GREY,string);
+	SendClientMessageToAll(COLOR_GREY,string);
 
 	new userid;
 	userid = BUD::GetNameUID(name);
@@ -230,7 +230,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	{
 		if(PRESSED(KEY_WALK | KEY_JUMP) && !IsPlayerInAnyVehicle(playerid))
 		{
-		    ShowHUD(playerid,true);
+		    	ShowHUD(playerid,true);
 			ClearAnimations(playerid);
 			return 1;
 		}
@@ -276,6 +276,8 @@ public OnRconLoginAttempt(ip[], password[], success)
 				case 0: Kick(playerid);
 				case 1:
 				{
+					if(pAdmin[playerid] == true) continue;
+
 					new name[MAX_PLAYER_NAME+1];
 					GetPlayerName(playerid, name, sizeof(name));
 
