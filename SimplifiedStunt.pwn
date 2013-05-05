@@ -100,6 +100,8 @@ public OnPlayerConnect(playerid)
 
 	CreateHUD(playerid);
 	CreateBrowseMenu(playerid);
+	CreateBackground(playerid);
+	PlayerTextDrawShow(playerid, backg_Sprite[playerid]);
 	ShowHUD(playerid,false);
 	
 	new userid;
@@ -339,6 +341,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			BUD::RegisterName(name, inputtext);
 
 			TogglePlayerSpectating(playerid, false);
+			PlayerTextDrawHide(playerid, backg_Sprite[playerid]);		
 			return 1;
 		}
 		case DIALOG_LOGIN:
@@ -360,15 +363,15 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					"vehmodel", 	pVehModel[playerid],
 					"vehcolour1", 	pVehColour[playerid][0],
 					"vehcolour2", 	pVehColour[playerid][1],
-					"admin", 		pAdmin[playerid],
-					"skin", 		pSkin[playerid],
-					"weather", 		pWeather[playerid],
-					"world", 		pWorld[playerid],
+					"admin", 	pAdmin[playerid],
+					"skin", 	pSkin[playerid],
+					"weather", 	pWeather[playerid],
+					"world", 	pWorld[playerid],
 					"practice", 	pPractice[playerid],
-					"hour", 		pTime[playerid][0],
-					"minute", 		pTime[playerid][1],
+					"hour", 	pTime[playerid][0],
+					"minute", 	pTime[playerid][1],
 					"savepoint", 	pSavedPoint[playerid],
-					"saveveh", 		pSavedVeh[playerid],
+					"saveveh", 	pSavedVeh[playerid],
 					"saveposx", 	pSavedPos[playerid][0],
 					"saveposy", 	pSavedPos[playerid][1],
 					"saveposz", 	pSavedPos[playerid][2],
@@ -382,6 +385,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				SendClientMessage(playerid, COLOR_WHITE, string);
 
 				TogglePlayerSpectating(playerid, false);
+				PlayerTextDrawHide(playerid, backg_Sprite[playerid]);
 
 				pSkipClass[playerid] = true;
 				pLoggedIn[playerid] = true;
