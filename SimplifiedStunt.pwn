@@ -8,10 +8,10 @@
 #include <ZCMD>
 #include <BUD>
 
-#include "../include/settings.pwn"
-#include "../include/variables.pwn"
-#include "../include/functions.pwn"
-#include "../include/commands.pwn"
+#include "../SimplifiedStunt/settings.pwn"
+#include "../SimplifiedStunt/variables.pwn"
+#include "../SimplifiedStunt/functions.pwn"
+#include "../SimplifiedStunt/commands.pwn"
 
 main()
 {
